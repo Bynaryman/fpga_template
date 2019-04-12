@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // 
-// Company: {{COMPANY}}
-// Author: {{AUTHOR}}
+// Company: BSC
+// Author: SomeOne
 //
-// Create Date: {{DATE}}
-// Module Name: {{MODULE_NAME}}
+// Create Date: 12/04/2019
+// Module Name: tb_accumulator
 // Description:
-//     {{DESCRIPTION}}
+//     A very short useless description
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -17,7 +17,6 @@ module {{TB_MODULE_NAME}}();
     
     localparam integer DATA_WIDTH = 8;
     localparam integer NB_DATA = 10;
-    logic [DATA_WIDTH-1:0] slice_window [WINDOWS_HEIGHT-1:0][WINDOWS_WIDTH-1:0];
     localparam  INPUT_BASE_PATH = "";
     localparam  INPUT_PATH = "";
     localparam  READ_B_OR_H = "H";
