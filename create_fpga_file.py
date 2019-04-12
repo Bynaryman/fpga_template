@@ -15,6 +15,17 @@ def get_args():
     parser.add_argument('--module_name', type=str, metavar='<module_name>', help='the output name of module and file')
     return parser.parse_args()
 
+def get_testbench_path(args):
+    path=''
+    if args.output_hdl_type == 'sv':
+        path = TEMPLATE_PATH + 'sv/testbench.txt'
+    elif args.output_hdl_type == 'v':
+        path = TEMPLATE_PATH + 'v/testbench.txt'
+    elif args.output_hdl_type == 'vhd':
+        path = TEMPLATE_PATH + 'vhd/testbench.txt'
+    return path
+
+
 
 def get_header_path(args):
     path=''
@@ -27,28 +38,34 @@ def get_header_path(args):
     return path
 
 
-def create_header(header_template, args):
-    return header_template
+def create_header(template_header_path, args):
+    t = ''
+    with open(template_header_path, 'r') as thp:
+        t = thp.read()
+    return t
 
 
 def create_pipeline(args):
     return 'mon module'
 
 
-def create_testbecnh(args):
-    return ''
+def create_testbench(template_testbench_path, args):
+    t = ''
+    with open(template_testbench_path, 'r') as ttp:
+        t = ttp.read()
+    return t
 
 
 def main():
     output_content = ''
     args = get_args()
     template_header_path = get_header_path(args)
-    with open(template_header_path, 'r') as thp:
-        output_content = create_header(thp.read(), args)
+    output_content = create_header(template_header_path, args)
     if args.output_module_type == 'pipeline':
         output_content = output_content + '\n' + create_pipeline(args)
     else:
-        output_content = output_content + '\n' + create_testbench(args)
+        template_testbench_path = get_testbench_path(args)
+        output_content = output_content + '\n' + create_testbench(template_testbench_path, args)
 
     name_o = args.module_name + '.' + args.output_hdl_type
     with open(name_o, 'w') as output_file:
