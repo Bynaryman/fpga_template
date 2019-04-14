@@ -3,14 +3,14 @@
 // Company: BSC
 // Author: SomeOne
 //
-// Create Date: 12/04/2019
+// Create Date: 14/04/2019
 // Module Name: tb_accumulator
 // Description:
 //     A very short useless description
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module {{TB_MODULE_NAME}}();
+module tb_accumulator();
 
     parameter CLK_PERIOD      = 2;
     parameter CLK_HALF_PERIOD = CLK_PERIOD / 2;

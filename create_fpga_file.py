@@ -61,6 +61,7 @@ def create_testbench(template_testbench_path, args):
     t = ''
     with open(template_testbench_path, 'r') as ttp:
         t = ttp.read()
+        t = t.replace('{{TB_MODULE_NAME}}', args.module_name)
     return t
 
 
